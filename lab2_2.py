@@ -5,26 +5,24 @@ y = int(sys.argv[2])
 z = int(sys.argv[3])
 la = 'la'
 song = la
-counterX = 2
-counterY = 2
+sing = ''
 
 if x > 1:
-	for counterX in range(x-1):
+	for counter in range(x-1):
 		song = song + '-' + la
-		counterX = counterX + 1
 
 if y == 0:
-	song = ''
+	sing = ''
 else:
-	song = ' ' + song
+	sing = song
 	if y > 1:
-		for counterY in range(y-1):
-			song = song + ' ' + song
-			counterY = counterY + 1
+		for counter in range(y-1):
+			sing = sing + ' ' + song
+	sing = ' ' + sing
 
 if z == 1:
-	song = song + '!'
+	sing = sing + '!'
 else:
-	song = song + '.'
+	sing = sing + '.'
 
-print ('Everybody sing a song:' + song)
+print ('Everybody sing a song:' + sing)
