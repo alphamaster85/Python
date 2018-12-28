@@ -1,26 +1,29 @@
-import sys
+list1 = [1, 1.0, '1', -1, 1]
+list2 = ['qwe', 'reg', 'qwe', 'REG']
+list3 = [32, 32.1, 32.0, -123]
+list4 = [1, 2, 1, 1, 3, 4, 5, 4, 6, '2', 7, 8, 9, 0, 1, 2, 3, 4, 5]
 
-list = [1, 1.0, '1', -1, 1]
+def clean_list(list1):
+	if list1 == []:
+		return (list1)
 
-# def clean_list1(list_to_clean):
-# 	for element in range(len(list_to_clean)):
-# 		for elem in range(element-1):
-# 			if list_to_clean[elem] is list_to_clean[element]:
-# 				list_to_clean2 = list_to_clean
-# 				list_to_clean = list_to_clean[:element]
-# 				for e in range(element, len(list_to_clean)):
-# 					list_to_clean[e] = list_to_clean2[e+1]
-# 	return (list_to_clean)
+	list2 = []
+	list2.append(list1[0])
 
-# print(clean_list(list_to_clean))
+	for i in range(1, len(list1)):
+		flag = False
+		for j in range(i):
+			if list1[i] is list1[j]:
+				flag = True
 
-def clean_list(list):
-	for e in range(1, len(list)):
-		for p in range(list.count(list[e])):
-			for i in range(e, len(list)):
-				if list[e-1] is list[i]:
-					del list[i]
+		if flag == False:
+			list2.append(list1[i])
 
-	return (list)
+	if list2 == []:
+		return (list1)
+	return (list2)
 
-print(clean_list(list))
+print(clean_list(list1))
+print(clean_list(list2))
+print(clean_list(list3))
+print(clean_list(list4))

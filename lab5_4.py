@@ -1,26 +1,25 @@
-a = 1233211
-b = 12128
+folder1 = ['C:', 'backup.log', 'ideas.txt']
+filename1 = 'ideas.txt'
+folder2 = [ 'D:', ['recycle bin'], ['tmp', ['old'], ['new folder1', 'asd.txt', 'asd.bak', 'find.me.bak' ] ], 'hey.py']
+filename2 = 'find.me'
+folder3 = [ '/home', ['user1'], ['user2', ['my pictures'], ['desktop', 'not this', 'and not this', ['new folder', 'hereiam.py' ] ] ], 'work.ovpn', 'prometheus.7z', ['user3', ['temp'], ], 'hey.py']
+filename3 = 'hereiam.py'
 
 def file_search(folder, filename):
-	a = str(a)
-	b = str(b)
+	way = filename
 
-	count = 0
+	for elem in folder:
+		if elem == filename:
+			return str(folder[0]) + '/' + way
+		elif isinstance(elem, list) and len(elem) > 1:
+			is_False = file_search(elem, filename)
+			if is_False == False:
+				return False
+			else:
+				return str(folder[0]) + '/' + str(file_search(elem, filename))
 
-	list_a = []
-	list_b = []
+	return False
 
-	for e in a:
-		list_a.append(e)
-
-	for e in b:
-		list_b.append(e)
-
-	for i in range(len(list_b)):
-		for j in range(len(list_a)):
-			if list_b[i] is list_a[j]:
-				count = count + 1
-				break
-	return count
-
-print (counter(a, b))
+print (file_search(folder1, filename1))
+print (file_search(folder2, filename2))
+print (file_search(folder3, filename3))
