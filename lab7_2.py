@@ -14,25 +14,8 @@ class Student(object):
     def __init__(self, name, conf):
         self.name = name
         self.conf = conf
-        for i in range(self.conf['lab_num']):
-            self.labs.append(0)
 
-    def make_lab(self, m, n = None):
-
-        if n == None:
-            for i in range(len(self.labs)):
-                if self.labs[i] == 0:
-                    if m >= self.conf['lab_max']:
-                        self.labs[i] = self.conf['lab_max']
-                    else:
-                        self.labs[i] = m                    
-                    break
-        else:
-            if n < self.conf['lab_num']:
-                if m >= self.conf['lab_max']:
-                    self.labs[n] = self.conf['lab_max']
-                else:
-                    self.labs[n] = m
+    def make_lab(self, m,n):
         
         self.lab_rat = 0
         for i in self.labs:
@@ -49,15 +32,15 @@ class Student(object):
         return self
 
     def is_certified(self):
-        return (self.rating * 100, self.rating >= self.conf['k'])
+        return (self.rating, self.rating >= self.k)
 
 
 conf = {
-    'exam_max': 30,
-    'lab_max': 7,
-    'lab_num': 10,
-    'k': 0.61,
-}
+'exam_max': 30,
+'lab_max': 7,
+'lab_num': 10,
+'k': 0.61,
+}.
 
 oleg = Student('Oleg', conf)
 oleg.make_lab(1)  # labs: 1 0 0 0 0 0 0 0 0 0, exam: 0
